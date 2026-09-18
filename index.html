@@ -1,89 +1,182 @@
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FoxHub</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Consolas,monospace}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoxHub</title>
 
-body{
-background:linear-gradient(135deg,#180000,#4a0000 55%,#8b0000);
-color:#fff
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Consolas, monospace;
+    }
 
-.wrap{max-width:1400px;margin:auto}
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #180000, #4a0000 55%, #8b0000);
+      color: #fff;
+    }
 
-.header{
-text-align:center;
-padding:14px;
-font-size:22px;
-font-weight:bold;
-background:rgba(90,0,0,.55)
-}
+    .wrap {
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+    }
 
-.section{
-margin:18px 8px 8px;
-font-size:18px;
-font-weight:700;
-padding-bottom:6px;
-border-bottom:1px solid rgba(255,255,255,.15)
-}
+    .header {
+      text-align: center;
+      padding: 18px;
+      font-size: 24px;
+      font-weight: bold;
+      background: rgba(90, 0, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
 
-.box{
-margin:12px 8px;
-background:rgba(70,0,0,.55);
-padding:14px;
-border-radius:8px
-}
+    .section {
+      margin: 18px 8px 8px;
+      font-size: 18px;
+      font-weight: 700;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
 
-.box h2{
-font-size:16px;
-margin-bottom:8px
-}
+    .box {
+      margin: 12px 8px;
+      background: rgba(70, 0, 0, 0.55);
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-pre{
-font-size:13px;
-border-radius:6px;
-overflow:auto;
-background:#050505;
-padding:10px
-}
+    .box h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
 
-button{
-width:100%;
-margin-top:12px;
-padding:10px;
-font-size:14px;
-border-radius:6px;
-background:linear-gradient(90deg,#b30000,#650000);
-color:#fff;
-border:none;
-cursor:pointer
-}
+    pre {
+      font-size: 13px;
+      border-radius: 6px;
+      overflow-x: auto;
+      background: #050505;
+      padding: 10px;
+      color: #ffdddd;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
 
-button:hover{
-background:linear-gradient(90deg,#d40000,#800000)
-}
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #b30000, #650000);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-@media(max-width:700px){
-.header{font-size:20px}
-.section{font-size:16px}
-.box h2{font-size:15px}
-pre{font-size:12px}
-button{font-size:13px}
-}
-</style></head><body><div class='wrap'><div class='header'>🦊 FoxHub</div>
+    button:hover {
+      background: linear-gradient(90deg, #d40000, #800000);
+      transform: translateY(-1px);
+    }
 
-<div class='section'>🔫 Murder Mystery 2 🔪</div>
+    button:active {
+      transform: scale(0.98);
+    }
 
-<div class='box'><h2>🦊 FoxName</h2><pre id='foxname'>loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2foxhub/foxname/refs/heads/main/lua"))()</pre><button onclick="copyText('foxname',this)">Copy Script</button></div>
+    @media (max-width: 700px) {
+      .header {
+        font-size: 20px;
+      }
 
-<div class='box'><h2>🤑 Spawner</h2><pre id='foxname'>loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2foxhub/mm2spawner/refs/heads/main/lua"))()</pre><button onclick="copyText('foxname',this)">Copy Script</button></div>
+      .section {
+        font-size: 16px;
+      }
 
-function copyText(id,b){
-const t=document.getElementById(id).innerText;
-navigator.clipboard.writeText(t).then(()=>{
-let o=b.innerText;
-b.innerText='Copied ✓';
-setTimeout(()=>b.innerText=o,1500);
-});
-}
-</script>
+      .box h2 {
+        font-size: 15px;
+      }
 
-</div></body></html>
+      pre {
+        font-size: 12px;
+      }
+
+      button {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <div class="header">
+      🦊 FoxHub
+    </div>
+
+    <div class="section">
+      🔫 Murder Mystery 2 🔪
+    </div>
+
+    <!-- FoxName -->
+    <div class="box">
+      <h2>🦊 FoxName</h2>
+
+      <pre id="foxname">
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2foxhub/foxname/refs/heads/main/lua"))()
+      </pre>
+
+      <button onclick="copyText('foxname', this)">
+        Copy Script
+      </button>
+    </div>
+
+    <!-- Spawner -->
+    <div class="box">
+      <h2>🤑 Spawner</h2>
+
+      <pre id="spawner">
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2foxhub/mm2spawner/refs/heads/main/lua"))()
+      </pre>
+
+      <button onclick="copyText('spawner', this)">
+        Copy Script
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    function copyText(id, button) {
+      const element = document.getElementById(id);
+      const text = element.innerText.trim();
+
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          const originalText = button.innerText;
+
+          button.innerText = "Copied ✓";
+
+          setTimeout(() => {
+            button.innerText = originalText;
+          }, 1500);
+        })
+        .catch(() => {
+          button.innerText = "Copy Failed";
+
+          setTimeout(() => {
+            button.innerText = "Copy Script";
+          }, 1500);
+        });
+    }
+  </script>
+
+</body>
+</html>
